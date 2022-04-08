@@ -30,7 +30,7 @@ jobs:
         uses: rtCamp/action-slack-notify@v2
         env:
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
-          SLACK_ICON: https://avatars.githubusercontent.com/u/8751968?s=48
-          SLACK_MESSAGE: "deployed to cloud.gov :rocket:"
+          SLACK_MSG_AUTHOR: usds-bot
+          SLACK_MESSAGE: "GH Actions: deployed Onceler :rocket:"
           MSG_MINIMAL: true
           
