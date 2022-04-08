@@ -25,3 +25,12 @@ jobs:
           cf_password: ${{ secrets.CF_PASSWORD }}
           cf_org: ${{ secrets.CF_ORG }}
           cf_space: ${{ secrets.CF_SPACE }}
+
+      - name: Notify slack channel
+        uses: rtCamp/action-slack-notify@v2
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+          SLACK_ICON: https://avatars.githubusercontent.com/u/8751968?s=48
+          SLACK_MESSAGE: "deployed to cloud.gov :rocket:"
+          MSG_MINIMAL: true
+          
