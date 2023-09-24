@@ -1,3 +1,8 @@
 ---
 applications:
   - name: onceler
+    default-route: true
+    buildpacks:
+      - ruby_buildpack
+    memory: 256M
+    stack: cflinuxfs4
