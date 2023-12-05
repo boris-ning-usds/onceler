@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - master
+      - dev/create-false-commit
   schedule:
     - cron: '30 8 * * 0' # Every Sunday at 8:30AM UTC (5:30AM EST)
 
