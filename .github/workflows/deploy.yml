@@ -2,7 +2,8 @@ name: Onceler Deploy
 
 on:
   push:
-    branches: [master]
+    branches:
+      - master
   schedule:
     - cron: '30 9 * * 0' # Every Sunday at 9:30AM UTC (5:30AM EST)
 
@@ -11,7 +12,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
+
       - name: Setup ruby installation
         uses: ruby/setup-ruby@v1
         with:
