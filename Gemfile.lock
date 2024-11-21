@@ -4,9 +4,9 @@ GEM
     base64 (0.2.0)
     daemons (1.4.1)
     eventmachine (1.2.7)
-    mustermann (3.0.2)
+    mustermann (3.0.3)
       ruby2_keywords (~> 0.0.1)
-    rack (2.2.9)
+    rack (2.2.10)
     rack-protection (3.2.0)
       base64 (>= 0.1.0)
       rack (~> 2.2, >= 2.2.4)
@@ -36,4 +36,4 @@ RUBY VERSION
    ruby 3.2.4p170
 
 BUNDLED WITH
-   2.5.15
+   2.5.18
