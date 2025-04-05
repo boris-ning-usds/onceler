@@ -44,13 +44,13 @@ installations of multiple Ruby versions.
 
 Install gem dependencies
 
-```sh
+```bash
 bundle install
 ```
 
 Start the application
 
-```sh
+```bash
 # Usage: serve [BIND_ADDR] [BIND_PORT]
 
 # Listen only on localhost
