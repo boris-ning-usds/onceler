@@ -48,7 +48,7 @@ DEPENDENCIES
   thin
 
 RUBY VERSION
-   ruby 3.4.2p28
+   ruby 3.2.8p263
 
 BUNDLED WITH
-   2.6.9
+   2.4.19
