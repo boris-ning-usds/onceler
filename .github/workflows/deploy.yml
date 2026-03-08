@@ -9,6 +9,7 @@ on:
 
 jobs:
   deploy:
+    environment: prod
     runs-on: ubuntu-latest
     permissions:
       contents: read  # Read access to the repository contents
@@ -19,23 +20,15 @@ jobs:
           persist-credentials: false
 
       - name: Setup ruby installation
-        uses: ruby/setup-ruby@09a7688d3b55cf0e976497ff046b70949eeaccfd # v1.288.0
+        uses: ruby/setup-ruby@6ca151fd1bfcfd6fe0c4eb6837eb0584d0134a0c # v1.290.0
         with:
           bundler-cache: false
 
       - name: Deploy to cloud.gov
-        uses: cloud-gov/cg-cli-tools@main
+        uses: cloud-gov/cg-cli-tools@bafcd2b3d36984482c01b1dd2c3750b4f355b8a2 # 2026-03-05 Commit
         with:
           cf_api: ${{ secrets.CF_API }}
           cf_username: ${{ secrets.CF_USERNAME }}
           cf_password: ${{ secrets.CF_PASSWORD }}
           cf_org: ${{ secrets.CF_ORG }}
           cf_space: ${{ secrets.CF_SPACE }}
-
-      - name: Notify slack channel
-        uses: rtCamp/action-slack-notify@e31e87e03dd19038e411e38ae27cbad084a90661 # v2.3.3
-        env:
-          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
-          SLACK_MSG_AUTHOR: usds-bot
-          SLACK_MESSAGE: 'GH Actions: deployed Onceler :rocket:'
-          MSG_MINIMAL: true
