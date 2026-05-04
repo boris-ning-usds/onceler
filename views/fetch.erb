@@ -8,6 +8,17 @@
       padding: 1em;
       display: table;
     }
+    #copy-btn {
+      background: none;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      cursor: pointer;
+      padding: 0.3em 0.4em;
+      line-height: 0;
+      vertical-align: middle;
+      color: #444;
+    }
+    #copy-btn:hover { border-color: #888; }
     </style>
 <%= erb :'partials/header' %>
   </head>
@@ -21,6 +32,9 @@
     </h3>
 
     <pre id="secret"><%= escape @entry.content %></pre>
+    <p><button type="button" id="copy-btn" title="Copy to clipboard">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path><rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect></svg>
+    </button></p>
 
 <% if @entry.once? || @deleted %>
     <p>
@@ -45,6 +59,18 @@
     <p>
       <form><button formaction="../../">Share your own secret</button></form>
     </p>
+    <script>
+      var clipboardIcon = '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path><rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect></svg>';
+      var checkIcon = '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>';
+      document.getElementById('copy-btn').addEventListener('click', function() {
+        var btn = document.getElementById('copy-btn');
+        navigator.clipboard.writeText(document.getElementById('secret').textContent)
+          .then(function() {
+            btn.innerHTML = checkIcon;
+            setTimeout(function() { btn.innerHTML = clipboardIcon; }, 2000);
+          });
+      });
+    </script>
   </body>
 </html>
 <% # vim: set ft=eruby sw=2 ts=2 tw=79: %>
