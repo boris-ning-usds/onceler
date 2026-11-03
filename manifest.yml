@@ -3,6 +3,9 @@ applications:
   - name: onceler
     default-route: true
     buildpacks:
-      - ruby_buildpack
+      # Pinned to upstream v1.11.4 for Ruby 3.4.12 support; cloud.gov's
+      # system ruby_buildpack (v1.11.1) only supports up to 3.4.7.
+      # Revert to `ruby_buildpack` once cloud.gov ships >= v1.11.4.
+      - https://github.com/cloudfoundry/ruby-buildpack/releases/download/v1.11.4/ruby-buildpack-cflinuxfs4-v1.11.4.zip
     memory: 256M
     stack: cflinuxfs4
